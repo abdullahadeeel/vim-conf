@@ -1,5 +1,49 @@
 -- Add all files
 vim.keymap.set("n", "<leader>ga", function()
+-- Add all files
+vim.keymap.set("n", "<leader>gaa", function()
+  vim.cmd("Git add .")
+end)
+
+-- Commit with inline message
+vim.keymap.set("n", "<leader>gc", function()
+  local msg = vim.fn.input("Commit message: ")
+  if msg ~= "" then
+    vim.cmd('Git commit -m "' .. msg .. '"')
+    print("Committed: " .. msg)
+  end
+end)
+
+-- Pull
+vim.keymap.set("n", "<leader>gpl", function()
+  vim.cmd("Git pull")
+end)
+
+-- Push
+vim.keymap.set("n", "<leader>gps", function()
+  vim.cmd("Git push")
+end)
+
+-- Create new branch
+vim.keymap.set("n", "<leader>gb", function()
+  local name = vim.fn.input("Branch name: ")
+  if name ~= "" then
+    vim.cmd("Git checkout -b " .. name)
+    print("Switched to new branch: " .. name)
+  end
+end)
+
+-- Add new remote
+vim.keymap.set("n", "<leader>gr", function()
+  local name = vim.fn.input("Remote name (e.g. origin): ")
+  if name == "" then return end
+
+  local url = vim.fn.input("Remote URL: ")
+  if url == "" then return end
+
+  vim.cmd("Git remote add " .. name .. " " .. url)
+  print("Added remote " .. name)
+end)
   vim.cmd("silent! !git add .")
   print("Added all files")
 end)
