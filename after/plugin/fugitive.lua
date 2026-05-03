@@ -15,12 +15,12 @@ vim.keymap.set("n", "<leader>gc", function()
 end)
 
 -- Pull
-vim.keymap.set("n", "<leader>gpl", function()
+vim.keymap.set("n", "<leader>gl", function()
   vim.cmd("Git pull")
 end)
 
 -- Push
-vim.keymap.set("n", "<leader>gps", function()
+vim.keymap.set("n", "<leader>gp", function()
   vim.cmd("Git push")
 end)
 
